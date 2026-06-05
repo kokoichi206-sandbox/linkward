@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>linkward 動作確認</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, sans-serif;
+        max-width: 640px;
+        margin: 40px auto;
+        line-height: 1.8;
+      }
+      section {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 12px 0;
+      }
+      h2 {
+        font-size: 14px;
+        margin: 0 0 8px;
+      }
+      .expect {
+        color: #2563eb;
+      }
+      .gap {
+        color: #b91c1c;
+      }
+      iframe {
+        width: 100%;
+        height: 70px;
+        border: 1px dashed #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>linkward 動作確認</h1>
+    <p>
+      拡張をリロードしてから各リンク/ボタンをクリックし、確認モーダルが出るかを見ます。
+    </p>
+
+    <section>
+      <h2>1. 素の mailto <span class="expect">→ モーダルが出るはず</span></h2>
+      <a href="mailto:test@example.com">test@example.com にメール</a>
+    </section>
+
+    <section>
+      <h2>
+        2. target="_blank" の mailto（報告された形式）
+        <span class="expect">→ モーダルが出るはず</span>
+      </h2>
+      <a
+        href="mailto:y.mori@divein.co.jp"
+        target="_blank"
+        rel="noreferrer noopener"
+        >y.mori@divein.co.jp</a
+      >
+    </section>
+
+    <section>
+      <h2>3. ネストした子要素 <span class="expect">→ モーダルが出るはず</span></h2>
+      <a href="tel:0312345678"><span><b>電話</b>する</span></a>
+    </section>
+
+    <section>
+      <h2>
+        4. iframe 内の mailto（all_frames 検証）
+        <span class="expect">→ モーダルが出るはず</span>
+      </h2>
+      <iframe
+        srcdoc='<a href="mailto:iframe@example.com">iframe 内のリンク</a>'
+      ></iframe>
+    </section>
+
+    <section>
+      <h2>
+        5. window.open での起動
+        <span class="gap">→ 現状は止まらない(MAIN world 未対応)</span>
+      </h2>
+      <button onclick="window.open('mailto:open@example.com')">
+        window.open(mailto)
+      </button>
+    </section>
+
+    <section>
+      <h2>
+        6. location.href での起動
+        <span class="gap">→ 現状は止まらない(MAIN world 未対応)</span>
+      </h2>
+      <button onclick="location.href = 'mailto:loc@example.com'">
+        location.href = mailto
+      </button>
+    </section>
+  </body>
+</html>

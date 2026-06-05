@@ -1,0 +1,38 @@
+{
+  "name": "linkward",
+  "version": "0.0.1",
+  "description": "Web サイトが勝手に外部アプリ(mailto: / tel: 等)を開くのを止める Chrome 拡張",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@9.12.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "compile": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "postinstall": "wxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"{src,entrypoints}/**/*\" \"*.{js,ts,json,md}\" \".github/**/*.yml\"",
+    "format:check": "prettier --check \"{src,entrypoints}/**/*\" \"*.{js,ts,json,md}\" \".github/**/*.yml\""
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@typescript-eslint/eslint-plugin": "^8.19.0",
+    "@typescript-eslint/parser": "^8.19.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "jsdom": "29.1.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "vitest": "4.1.7",
+    "wxt": "^0.20.6"
+  }
+}
